@@ -1,3 +1,7 @@
-site_name: IT Technology
+site_name: DevOps 技术
+site_url: http://docs.devops-dev.com/
 theme:
   name: "readthedocs"
+nav:
+    - 首页: index.md
+    - 关于: about.md
