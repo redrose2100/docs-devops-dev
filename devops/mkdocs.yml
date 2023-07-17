@@ -1,5 +1,5 @@
 site_name: DevOps 技术
-site_url: http://docs.devops-dev.com/
+site_url: https://docs.devops-dev.com/
 theme:
   name: "readthedocs"
 nav:
