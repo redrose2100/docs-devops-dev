@@ -1,7 +1,10 @@
-site_name: DevOps 技术
-site_url: http://docs.devops-dev.com/
+site_name: DevOps
+nav:
+  - Home: index.md
+  - About: about.md
 theme:
   name: "readthedocs"
-nav:
-    - 首页: index.md
-    - 关于: about.md
+  hljs_languages:
+    - yaml
+    - rust
+  navigation_depth: 10
