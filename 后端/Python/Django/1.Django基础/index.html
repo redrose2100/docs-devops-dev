@@ -5,14 +5,14 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
       <link rel="shortcut icon" href="../../../../img/favicon.ico" />
-    <title>安装Django - DevOps</title>
+    <title>Django 快速体验 - DevOps</title>
     <link rel="stylesheet" href="../../../../css/theme.css" />
     <link rel="stylesheet" href="../../../../css/theme_extra.css" />
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/styles/github.min.css" />
     
       <script>
         // Current page data
-        var mkdocs_page_name = "\u5b89\u88c5Django";
+        var mkdocs_page_name = "Django \u5feb\u901f\u4f53\u9a8c";
         var mkdocs_page_input_path = "\u540e\u7aef\\Python\\Django\\1.Django\u57fa\u7840.md";
         var mkdocs_page_url = null;
       </script>
@@ -63,8 +63,24 @@
     <ul class="current">
                 <li class="toctree-l2 current"><a class="reference internal current" href="#">Django</a>
     <ul class="current">
-                <li class="toctree-l3 current"><a class="reference internal current" href="./">安装Django</a>
+                <li class="toctree-l3 current"><a class="reference internal current" href="./">Django 快速体验</a>
     <ul class="current">
+    <li class="toctree-l4"><a class="reference internal" href="#django_1">安装Django</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#django_2">创建Django项目</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#app">创建App</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#app_1">注册app</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#url">新增一个url路由</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#_1">编写视图函数</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#django_3">启动Django项目</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#_2">浏览器访问</a>
+    </li>
     </ul>
                 </li>
     </ul>
@@ -106,7 +122,7 @@
           <li>后端 &raquo;</li>
           <li>Python &raquo;</li>
           <li>Django &raquo;</li>
-      <li>安装Django</li>
+      <li>Django 快速体验</li>
     <li class="wy-breadcrumbs-aside">
     </li>
   </ul>
@@ -115,12 +131,55 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
             <div class="section" itemprop="articleBody">
               
-                <h1 id="django">安装Django</h1>
+                <h1 id="django">Django 快速体验</h1>
+<h2 id="django_1">安装Django</h2>
 <pre><code class="language-bash">pip install django
 </code></pre>
-<h1 id="django_1">创建Django项目</h1>
+<h2 id="django_2">创建Django项目</h2>
 <pre><code class="language-bash">django-admin startproject MyDjangoDemo
 </code></pre>
+<h2 id="app">创建App</h2>
+<pre><code class="language-bash">python manage.py startapp app01
+</code></pre>
+<h2 id="app_1">注册app</h2>
+<p>在 MyDjangoDemo/settings.py文件中的 INSTALLED_APPS 中增加如下内容</p>
+<pre><code class="language-bash">'app01.apps.App01Config'
+</code></pre>
+<p>增加后 INSTALLED_APPS 内容如下：</p>
+<pre><code class="language-bash">INSTALLED_APPS = [
+    'app01.apps.App01Config',
+    'django.contrib.admin',
+    'django.contrib.auth',
+    'django.contrib.contenttypes',
+    'django.contrib.sessions',
+    'django.contrib.messages',
+    'django.contrib.staticfiles',
+]
+</code></pre>
+<h2 id="url">新增一个url路由</h2>
+<p>将 MyDjangoDemo/urls.py 文件中的 urlpatterns 中默认的注释掉，然后增加一条自定义路由，比如增加 index 的路由,urls.py 此时内容如下：</p>
+<pre><code class="language-bash">from django.urls import path
+from app01 import views
+
+urlpatterns = [
+    # path('admin/', admin.site.urls),
+    path('index/', views.index),
+]
+</code></pre>
+<h2 id="_1">编写视图函数</h2>
+<p>在 app01/views.py 中编写视图函数，此时文件内容如下：</p>
+<pre><code class="language-bash">from django.shortcuts import render,HttpResponse
+
+# Create your views here.
+
+def index(request):
+    return HttpResponse(&quot;Welcome to Django.&quot;)
+</code></pre>
+<h2 id="django_3">启动Django项目</h2>
+<pre><code class="language-bash">python manage.py runserver
+</code></pre>
+<h2 id="_2">浏览器访问</h2>
+<p>在浏览器访问 http://127.0.0.1:8000/index/ 即可看到 "Welcome to Django" 字符串了。</p>
               
             </div>
           </div><footer>
