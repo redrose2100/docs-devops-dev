@@ -1,6 +1,6 @@
 site_name: DevOps
 theme:
-  name: "readthedocs"
+  name: "material"
   hljs_languages:
     - yaml
     - rust
